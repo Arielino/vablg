@@ -1,0 +1,162 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actualités - VA Livraison{% endblock %}
+
+{% block body %}
+<div class="news-container">
+    <div class="news-header">
+        <h1 class="news-title">
+            <i class="ri-newspaper-fill me-3"></i>Actualités
+        </h1>
+        <p class="news-subtitle">Restez informé des dernières nouvelles de VA Livraison & Suivi de Colis</p>
+    </div>
+
+    <div class="articles-grid">
+        {% for article in articles %}
+            <article class="article-card">
+                <div class="article-meta">
+                    <span class="article-author">
+                        <i class="ri-user-line me-1"></i>
+                        Admin
+                    </span>
+                </div>
+
+                <h2 class="article-title">{{ article.title }}</h2>
+                <div class="article-content">
+                    {{ article.content|length > 200 ? article.content|slice(0, 200) ~ '...' : article.content }}
+                </div>
+
+                <!-- Section Commentaires -->
+                <div class="comments-section">
+                    <div class="comments-header">
+                        <div class="comments-count">
+                            <i class="ri-chat-3-line"></i>
+                            {{ article.commentaires|length }} commentaire{{ article.commentaires|length > 1 ? 's' : '' }}
+                        </div>
+                        <button class="comments-toggle" onclick="toggleComments({{ article.id }})">
+                            <i class="ri-arrow-down-s-line"></i>
+                            Voir les commentaires
+                        </button>
+                    </div>
+
+                    <div class="comments-list" id="comments-{{ article.id }}" style="display: none;">
+                        {% for commentaire in article.commentaires %}
+                            <div class="comment-item">
+                                <div class="comment-header">
+                                    <div class="comment-author">
+                                        <div class="author-avatar">
+                                            {{ commentaire.pseudo|first|upper }}
+                                        </div>
+                                        <span class="author-name">{{ commentaire.pseudo }}</span>
+                                    </div>
+                                </div>
+                                <div class="comment-message">
+                                    {{ commentaire.message }}
+                                </div>
+                                <div class="comment-actions">
+                                    <button class="comment-action like">
+                                        <i class="ri-heart-line"></i>
+                                        J'aime
+                                    </button>
+                                    <button class="comment-action reply">
+                                        <i class="ri-reply-line"></i>
+                                        Répondre
+                                    </button>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="no-comments">
+                                <i class="ri-chat-1-line"></i>
+                                <div class="no-comments-text">Aucun commentaire pour cet article</div>
+                                <div class="no-comments-subtext">Soyez le premier à commenter !</div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Formulaire de commentaire -->
+                    <div class="comment-form-container">
+                        <div class="comment-form-header">
+                            <h3 class="comment-form-title">Ajouter un commentaire</h3>
+                            <p class="comment-form-subtitle">Partagez votre avis sur cet article</p>
+                        </div>
+                        
+                        {{ form_start(commentForms[article.id], {'attr': {'class': 'comment-form'}}) }}
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="{{ commentForms[article.id].pseudo.vars.id }}">
+                                        <i class="ri-user-line me-1"></i>Votre nom
+                                    </label>
+                                    {{ form_widget(commentForms[article.id].pseudo, {
+                                        'attr': {
+                                            'class': 'form-input',
+                                            'placeholder': 'Entrez votre nom ou pseudo'
+                                        }
+                                    }) }}
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="{{ commentForms[article.id].message.vars.id }}">
+                                    <i class="ri-message-2-line me-1"></i>Votre commentaire
+                                </label>
+                                {{ form_widget(commentForms[article.id].message, {
+                                    'attr': {
+                                        'class': 'form-input form-textarea',
+                                        'placeholder': 'Partagez votre avis sur cet article...'
+                                    }
+                                }) }}
+                            </div>
+                            
+                            <button type="submit" class="form-submit">
+                                <i class="ri-send-plane-fill me-2"></i>Publier le commentaire
+                            </button>
+                        {{ form_end(commentForms[article.id]) }}
+                    </div>
+                </div>
+            </article>
+        {% else %}
+            <div class="no-articles" style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
+                <i class="ri-newspaper-line" style="font-size: 4rem; color: #adb5bd; margin-bottom: 20px; display: block;"></i>
+                <h2 style="color: #6c757d; margin-bottom: 10px;">Aucun article disponible</h2>
+                <p style="color: #adb5bd;">Les articles apparaîtront ici dès qu'ils seront publiés.</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+function toggleComments(articleId) {
+    const commentsList = document.getElementById('comments-' + articleId);
+    const toggleButton = event.target.closest('.comments-toggle');
+    const icon = toggleButton.querySelector('i');
+    
+    if (commentsList.style.display === 'none') {
+        commentsList.style.display = 'block';
+        toggleButton.classList.add('active');
+        toggleButton.innerHTML = '<i class="ri-arrow-up-s-line"></i>Masquer les commentaires';
+    } else {
+        commentsList.style.display = 'none';
+        toggleButton.classList.remove('active');
+        toggleButton.innerHTML = '<i class="ri-arrow-down-s-line"></i>Voir les commentaires';
+    }
+}
+
+// Animation d'apparition des cartes d'articles
+document.addEventListener('DOMContentLoaded', function() {
+    const articleCards = document.querySelectorAll('.article-card');
+    articleCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        
+        setTimeout(() => {
+            card.style.transition = 'all 0.6s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, index * 200);
+    });
+});
+</script>
+{% endblock %}
+
+
+

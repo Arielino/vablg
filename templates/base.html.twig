@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        {% block stylesheets %}
+    {# Bootstrap CDN #}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    {# RemixIcon CDN #}
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    {# CSS personnalisés #}
+    <link rel="stylesheet" href="{{ asset('assets/css/nav.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/news.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/comments.css') }}">
+    {# CSS de pluie (rain effect) #}
+    <link rel="stylesheet" href="{{ asset('assets/css/rain.css') }}">
+
+    {# Chemin des images #}
+    <link rel="preload" href="{{ asset('assets/images/') }}" as="image">
+        {% endblock %}
+
+        {% block javascripts %}
+      <script src="{{ asset('assets/js/stats-animate.js') }}"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        {% endblock %}
+    </head>
+    <body>
+         {# 🔷 Barre de navigation commune à tout le site #}
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="{{ path('app_home') }}">
+                <i class="ri-home-2-fill me-1"></i> Home
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_news') }}"><i class="ri-newspaper-fill me-1"></i> News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_login') }}"><i class="ri-user-fill me-1"></i> Connexion</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+        {# 🔷 Contenu principal de la page #}
+
+
+
+         <div class="rain-bg">
+  <!-- 🌎 CONTENU GLOBAL (body + footer collé en bas) -->
+    <div class="d-flex flex-column min-vh-100 rain-bg">
+        <!-- 📦 Contenu dynamique -->
+        <main class="flex-grow-1">
+            {% block body %}{% endblock %}
+        </main>
+
+        <!-- 📌 Footer collé en bas -->
+        <footer class="footer-section bg-dark text-white pt-5 pb-3 mt-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <h4 class="fw-bold">VA Livraison & Suivi de Colis</h4>
+                        <p class="small">Votre partenaire de confiance pour la gestion, le suivi et la livraison de colis en Afrique de l'Ouest.</p>
+                    </div>
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <h5 class="mb-3">Liens utiles</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#choose-us" class="text-white-50 text-decoration-none">Pourquoi nous choisir ?</a></li>
+                            <li><a href="#services" class="text-white-50 text-decoration-none">Nos Services</a></li>
+                            <li><a href="#contact" class="text-white-50 text-decoration-none">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 text-md-end">
+                        <h5 class="mb-3">Suivez-nous</h5>
+                        <a href="#" class="text-white-50 me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-white-50 me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white-50 me-3"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="#" class="text-white-50"><i class="fab fa-instagram fa-lg"></i></a>
+                    </div>
+                </div>
+                <hr class="border-secondary my-4">
+                <div class="row">
+                    <div class="col text-center">
+                        <small>&copy; {{ "now"|date("Y") }} VA Livraison & Suivi de Colis. Tous droits réservés.</small>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

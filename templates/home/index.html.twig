@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - VA Livraison & Suivi de Colis{% endblock %}
+
+{% block body %}
+<!-- Hero Section -->
+<section class="hero-section min-vh-100 d-flex align-items-center text-white text-center">
+    <div class="container">
+        <h1 class="display-3 fw-bolder mb-4">Bienvenue sur VA Livraison & Suivi de Colis</h1>
+        <p class="lead mb-5 mx-auto" style="max-width: 600px;">La plateforme moderne pour gérer, suivre et livrer vos colis en toute simplicité.</p>
+        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+            <a href="#services" class="btn btn-warning btn-lg px-5 py-3 rounded-pill">Découvrir nos services</a>
+            <a href="#download" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill">Commencer</a>
+        </div>
+    </div>
+</section>
+
+<!-- Nos Services Section -->
+<section class="section" id="services">
+    <div class="container">
+        <h2 class="text-center mb-5">Nos Services</h2>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 text-center p-3">
+                    <img src="{{ asset('assets/images/c.jpeg') }}" class="card-img-top rounded" alt="Image représentant la collecte de colis">
+                    <h3 class="mt-3">Collecte de colis et bagages</h3>
+                    <p>Nos agents viennent à vous pour collecter vos colis rapidement, où que vous soyez.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 text-center p-3">
+                    <img src="{{ asset('assets/images/s.jpeg') }}" class="card-img-top rounded" alt="Image représentant le suivi de colis">
+                    <h3 class="mt-3">Suivi de colis et bagages</h3>
+                    <p>Suivez votre colis en temps réel depuis la collecte jusqu'à la livraison finale.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 text-center p-3">
+                    <img src="{{ asset('assets/images/l.jpeg') }}" class="card-img-top rounded" alt="Image représentant la livraison">
+                    <h3 class="mt-3">Livraison</h3>
+                    <p>Nous assurons des livraisons rapides et fiables à travers toute l'Afrique de l'Ouest.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 text-center p-3">
+                    <img src="{{ asset('assets/images/b.jpeg') }}" class="card-img-top rounded" alt="Image représentant une boutique locale">
+                    <h3 class="mt-3">Boutiques et abonnements</h3>
+                    <p>Découvrez vos boutiques locales préférées et recevez leurs produits chez vous.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 text-center p-3">
+                    <img src="{{ asset('assets/images/p.jpeg') }}" class="card-img-top rounded" alt="Partenaire">
+                    <h3 class="mt-3">Partenaire</h3>
+                    <p>Payez vos livraisons avec notre QR Code sécurisé, simplement depuis l'application.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pourquoi nous choisir Section -->
+<section class="choose-us-section py-5 bg-white">
+    <div class="container">
+        <h2 class="text-center mb-4">Pourquoi nous choisir ?</h2>
+        <div class="row text-center g-4">
+            {% set choix = ['Fiable', 'Rapide', 'Simple', 'Disponible'] %}
+            {% set details = [
+                'Un service professionnel et sécurisé.',
+                'Livraison express garantie partout.',
+                'Interface facile pour tout le monde.',
+                'Assistance 24h/7j en ligne et par téléphone.'
+            ] %}
+            {% for i in 0..3 %}
+                <div class="col-sm-6 col-md-3">
+                    <div class="p-3 border rounded h-100 shadow-sm">
+                        <h5 class="mb-2">{{ choix[i] }}</h5>
+                        <p>{{ details[i] }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Statistiques animées -->
+<section class="stats-section py-5">
+    <div class="container">
+        <div class="row text-center g-4">
+            <div class="col-md-3 col-6">
+                <div class="stat-card">
+                    <h2 class="stat-number"><span class="stat-animate" data-target="10000">0</span>+</h2>
+                    <p class="stat-label">Livraisons</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-card">
+                    <h2 class="stat-number" style="color: var(--accent-orange);"><span class="stat-animate" data-target="98">0</span>%</h2>
+                    <p class="stat-label">Clients satisfaits</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-card">
+                    <h2 class="stat-number">24/7</h2>
+                    <p class="stat-label">Support client</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-card">
+                    <h2 class="stat-number" style="color: var(--accent-orange);"><span class="stat-animate" data-target="15">0</span>+</h2>
+                    <p class="stat-label">Villes couvertes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Section Application -->
+<section class="download-section py-5 bg-dark text-white" id="download">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4 mb-md-0">
+                <h2 class="mb-3">Téléchargez l'application</h2>
+                <p>Suivez vos colis, organisez vos livraisons et gérez vos commandes depuis votre téléphone.</p>
+                <a href="#" class="btn btn-light btn-lg px-4 me-2">App Store</a>
+                <a href="#" class="btn btn-outline-light btn-lg px-4">Google Play</a>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="{{ asset('assets/images/a.png') }}" alt="Aperçu application mobile" class="img-fluid" style="max-height: 350px;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bouton remonter -->
+<a href="#" class="back-to-top position-fixed" title="Remonter en haut">
+    <i class="fas fa-chevron-up"></i>
+</a>
+
+{% endblock %}

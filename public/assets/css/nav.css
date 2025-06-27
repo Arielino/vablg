@@ -1,0 +1,51 @@
+/* 🌒 Navbar Harmonisé */
+:root {
+    --primary-blue: #2B6BFF;
+    --white: #FFFFFF;
+}
+
+.navbar {
+    background: var(--primary-blue) !important;
+    box-shadow: 0 4px 15px rgba(43, 107, 255, 0.2);
+    padding: 0.5rem 1rem !important;
+    transition: all 0.3s ease;
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: var(--white) !important;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .navbar-brand:hover {
+    color: var(--white) !important;
+    transform: translateY(-2px);
+}
+
+.navbar .nav-link.active {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 2rem;
+    padding-inline: 1.2rem;
+}
+
+.navbar i {
+    margin-right: 8px;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+@media (max-width: 991px) {
+    .navbar .nav-link {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-bottom: 0.5rem;
+    }
+} 

@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* ---
+   Nouveau design inspiré par meetscratch.com
+   - Palette sombre, moderne et attractive
+   - Le contenu HTML reste intact
+--- */
+
+:root {
+    --bg-dark: #121212;
+    --bg-card: #1E1E1E;
+    --text-primary: #FFFFFF;
+    --text-secondary: #A0A0A0;
+    --accent-color: #FF4D4D; /* Un rouge-orangé vibrant */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-secondary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    border-bottom: 1px solid var(--bg-card);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    background-color: var(--bg-dark);
+    min-height: 90vh; /* Moins que 100vh pour mieux voir le scroll */
+    border-bottom: none;
+}
+
+.hero-section .display-3 {
+    font-weight: 800; /* Plus audacieux */
+}
+
+.hero-section .lead {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.hero-section .btn-warning {
+    background-color: var(--accent-color);
+    color: var(--text-primary);
+    border: 2px solid var(--accent-color);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.hero-section .btn-warning:hover {
+    background-color: transparent;
+    color: var(--accent-color);
+}
+
+.hero-section .btn-outline-light {
+    border-color: var(--text-secondary);
+    color: var(--text-secondary);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.hero-section .btn-outline-light:hover {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* --- Sections Générales --- */
+#services, .choose-us-section, .stats-section {
+    background-color: var(--bg-dark);
+}
+
+#services h2, .choose-us-section h2, .stats-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem !important;
+}
+
+/* --- Nos Services Section --- */
+#services .card {
+    background-color: var(--bg-card);
+    border: 1px solid #282828;
+    border-radius: 12px !important;
+    padding: 20px !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+#services .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+#services .card img {
+    border-radius: 8px !important;
+    opacity: 0.9;
+}
+
+#services .card h3 {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+}
+#services p {
+    color:white;      /* vert doux */
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* --- Pourquoi nous choisir Section --- */
+.choose-us-section .border {
+    background-color: var(--bg-card);
+    border-color: #282828 !important;
+    border-radius: 12px !important;
+    padding: 25px !important;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    height: 100%;
+    box-shadow: none !important;
+}
+
+.choose-us-section .border:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color) !important;
+}
+
+.choose-us-section h5 {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+}
+
+/* --- Statistiques animées --- */
+.stat-card .stat-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+/* On force la couleur d'accent pour les stats qui ont un style inline */
+.stat-card h2[style*="color"] {
+    color: var(--accent-color) !important;
+}
+.stat-card .stat-number .stat-animate[data-target="10000"] {
+     color: var(--accent-color);
+}
+
+
+.stat-card .stat-label {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Section Application --- */
+.download-section {
+    background-color: var(--bg-card) !important; /* Un peu différent pour contraster */
+}
+
+.download-section h2 {
+    font-weight: 700;
+}
+
+.download-section .btn-light {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+.download-section .btn-light:hover {
+    background-color: #ff3333;
+    border-color: #ff3333;
+}
+
+.download-section .btn-outline-light {
+    border-color: var(--text-secondary);
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+.download-section .btn-outline-light:hover {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+}
+
+/* --- Bouton remonter --- */
+.back-to-top {
+    background: var(--accent-color);
+    color: var(--text-primary);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.back-to-top:hover {
+    background: #ff3333;
+    color: var(--text-primary);
+}
+
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+  
+  .choose-us-section .col-sm-6 {
+    margin-bottom: 1.5rem;
+  }
+
+  #services .col-md-6, .col-lg-4 {
+      margin-bottom: 1.5rem;
+  }
+}
+
